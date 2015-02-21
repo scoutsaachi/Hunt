@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hunt</title>
+  <title><%=@title%></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,17 @@
 <body>
 <div class="header">
 <h1>Scavenger Hunt</h1>
+<% if session[:login]%>
+      <p>Hi <%= User.find_by(login: session[:login]).user_name %>! 
+        <%= link_to("Logout", {:controller => :user, :action => :logout}) %> </p>
+    <% else %>
+      <p>  <%= link_to("Login", {:controller => :user, :action => :login}) %> </p>
+ <% end %>
+</div>
+<div class = "page_content">
+        <% if flash[:notice] %>
+        <p> <%= flash[:notice] %> </p>
+        <% end %>
 </div>
 <%= yield %>
 

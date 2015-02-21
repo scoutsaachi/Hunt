@@ -1,0 +1,31 @@
+<h1> Create a new user</h1>
+
+<%= form_for(@user, :method => :post, :url => {:action => :create}) do |f| %>
+	<% if @user.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this
+	      User from being saved:</h2>
+
+	      <ul>
+	      <% @user.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+    	</div>
+	<% end %>
+	  <p><%= f.label :user_name %></p>
+      <p><%= f.text_field :user_name %></p>
+
+      <p><%= f.label :email %></p>
+      <p><%= f.text_field :email %></p>
+
+      <p><%= f.label :login %></p>
+      <p><%= f.text_field :login %></p>
+
+      <p><%= f.label :password %></p>
+      <p><%= f.text_field :password %></p>
+
+      <p><%= f.label :password_confirmation %></p>
+      <p><%= f.text_field :password_confirmation %></p>
+	<p><%= submit_tag("Submit") %></p>
+<% end %>
