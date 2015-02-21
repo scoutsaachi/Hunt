@@ -36,8 +36,10 @@ ActiveRecord::Schema.define(version: 20150221201500) do
     t.integer  "user_id"
     t.datetime "date_time"
     t.string   "hunt_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "location"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "sessions", force: :cascade do |t|

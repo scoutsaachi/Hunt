@@ -4,6 +4,8 @@ class CreateScavengers < ActiveRecord::Migration
     	t.integer :user_id
     	t.datetime :date_time
     	t.string :hunt_name
+    	t.string :location
+    	t.string :description
       t.timestamps null: false
     end
   end
