@@ -1,0 +1,2 @@
+class ScavengerController < ApplicationController
+end
