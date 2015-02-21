@@ -1,5 +1,6 @@
 class UserController < ApplicationController
 	def index
+		@teams = Team.all
 		user = User.find(params[:id])
 		@title = user.user_name + "'s Dashboard"
 		@myhunts = user.scavengers
