@@ -11,7 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150221183311) do
+ActiveRecord::Schema.define(version: 20150221194048) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "photo_id"
+    t.integer  "user_id"
+    t.datetime "date_time"
+    t.string   "comment_value"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.integer  "task_id"
+    t.datetime "date_time"
+    t.string   "file_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scavengers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "date_time"
+    t.string   "hunt_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
@@ -22,5 +49,37 @@ ActiveRecord::Schema.define(version: 20150221183311) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+
+  create_table "tasks", force: :cascade do |t|
+    t.string   "task_name"
+    t.integer  "scavenger_id"
+    t.integer  "value"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string   "team_name"
+    t.integer  "scavenger_id"
+    t.integer  "score"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "teams_users", id: false, force: :cascade do |t|
+    t.integer "team_id"
+    t.integer "user_id"
+  end
+
+  add_index "teams_users", ["team_id"], name: "index_teams_users_on_team_id"
+  add_index "teams_users", ["user_id"], name: "index_teams_users_on_user_id"
+
+  create_table "users", force: :cascade do |t|
+    t.string   "user_name"
+    t.string   "login"
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
