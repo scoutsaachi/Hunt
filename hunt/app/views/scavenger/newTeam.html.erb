@@ -1,0 +1,19 @@
+<h1> Create a new team</h1>
+
+<%= form_for(@team, :method => :post, :url => {:action => :createTeam, :id => @scavid}) do |f| %>
+	<% if @team.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@scavenger.errors.count, "error") %> prohibited this
+	      Scavenger from being saved:</h2>
+
+	      <ul>
+	      <% @team.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+    	</div>
+	<% end %>
+	  <p><%= f.label :team_name %></p>
+      <p><%= f.text_field :team_name %></p>
+	<p><%= submit_tag("Submit") %></p>
+<% end %>

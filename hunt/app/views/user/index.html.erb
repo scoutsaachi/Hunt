@@ -1,11 +1,19 @@
+<%@teams.each do |te| %>
+<%= te.scavenger_id %>
+<% end %>
+
 <h1> My Teams </h1>
 <% @myteams.each do |t|  %>
 	<p> <%= t.team_name %> at <%= t.scavenger %> </p>
 <% end %>
 
 <h1> My hunts </h1>
-<%@myhunts.each do |h| %>
+<% @myhunts.each do |h| %>
 	<p><%= h.hunt_name %></p>
+	<% h.teams.each do |team| %>
+		<p> hi </p>
+		<p><%=team.team_name %> </p>
+	<% end %>
 <% end %>
 
 <h1> My Photos </h1>
