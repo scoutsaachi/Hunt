@@ -1,0 +1,11 @@
+<div class="scavenger photos">
+<h1><%= title %></h1>
+
+<div class="row">
+<% @scavenger.teams.each do |team| %>
+<h2><%= team.name %></h2>
+<% @team.photos.each do |photo| %>
+<img src="<%= photo.url %>" />
+<% end %>     
+</div>
+</div>

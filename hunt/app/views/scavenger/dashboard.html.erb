@@ -1,0 +1,18 @@
+<div class="scavenger photos">
+<h1><%= title %></h1>
+
+<div class="row">
+<p>Hunt Name: <%= scavenger.hunt_name %></p>
+<p>Hunt Location: <%= scavenger.location %></p>
+<p>Hunt Description: <%= scavenger.description %></p>
+<% @scavenger.tasks.each do |task| %>
+<p><%= task.task_name %> (worth <%= task.points %> points)</p>
+<% end %>
+<% @scavenger.teams.each do |team| %>
+<h2><%= team.name %></h2>
+<% @team.photos.each do |photo| %>
+<img src="<%= photo.url %>" />
+<% end %>
+<% end %>
+</div>
+</div>
