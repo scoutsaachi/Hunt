@@ -54,6 +54,17 @@ def create_task
 
 end
 
+def create_comment
+	@comment = Comment.new(task_params(params[:comment]))
+	if @comment.save
+		flash[:notice] = "Comment created successfully"
+		redirect_to(:controller => :scavenger, :action => :dashboard, :id => @task.scavenger.id)
+	else
+		flash[:notice] = 'Comment not successful'
+		render(:action => :new_task)
+
+end
+
 #/scavenger/newTeam/{scavengerid}
 def newTeam
 	if !session[:login]
